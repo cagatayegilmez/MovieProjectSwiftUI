@@ -29,9 +29,38 @@
 		52E782F82F07D15100ADC313 /* MovieProjectSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieProjectSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		52328F452F14FEF0004DA772 /* Exceptions for "MovieProjectSwiftUI" folder in "MovieProjectSwiftUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 52E782ED2F07D15100ADC313 /* MovieProjectSwiftUITests */;
+		};
+		52328F462F14FEF0004DA772 /* Exceptions for "MovieProjectSwiftUI" folder in "MovieProjectSwiftUIUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 52E782F72F07D15100ADC313 /* MovieProjectSwiftUIUITests */;
+		};
+		52328F492F150077004DA772 /* Exceptions for "MovieProjectSwiftUI" folder in "MovieProjectSwiftUI" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 52E782DB2F07D15000ADC313 /* MovieProjectSwiftUI */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		52E782DE2F07D15000ADC313 /* MovieProjectSwiftUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				52328F492F150077004DA772 /* Exceptions for "MovieProjectSwiftUI" folder in "MovieProjectSwiftUI" target */,
+				52328F452F14FEF0004DA772 /* Exceptions for "MovieProjectSwiftUI" folder in "MovieProjectSwiftUITests" target */,
+				52328F462F14FEF0004DA772 /* Exceptions for "MovieProjectSwiftUI" folder in "MovieProjectSwiftUIUITests" target */,
+			);
 			path = MovieProjectSwiftUI;
 			sourceTree = "<group>";
 		};
@@ -388,8 +417,11 @@
 		52E783032F07D15100ADC313 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_KEY = be8aa2dcfa861969c4fd52d356375ed4;
+				API_URL = "https://api.themoviedb.org/3/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_INFOPLIST_LOCALIZATIONS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QX735LV746;
@@ -397,7 +429,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MovieProjectSwiftUI/Info.plist;
+				INFOPLIST_KEY_API_KEY = "$(API_KEY)";
+				INFOPLIST_KEY_API_URL = "$(API_URL)";
 				INFOPLIST_KEY_CFBundleDisplayName = "Movie Project";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -415,7 +450,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cagatayegilmez.MovieProjectSwiftUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cagatayegilmez.MovieProjectSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -434,8 +469,11 @@
 		52E783042F07D15100ADC313 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_KEY = be8aa2dcfa861969c4fd52d356375ed4;
+				API_URL = "https://api.themoviedb.org/3/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_INFOPLIST_LOCALIZATIONS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QX735LV746;
@@ -443,7 +481,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MovieProjectSwiftUI/Info.plist;
+				INFOPLIST_KEY_API_KEY = "$(API_KEY)";
+				INFOPLIST_KEY_API_URL = "$(API_URL)";
 				INFOPLIST_KEY_CFBundleDisplayName = "Movie Project";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -461,7 +502,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cagatayegilmez.MovieProjectSwiftUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cagatayegilmez.MovieProjectSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
@@ -481,6 +522,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"BUNDLE_LOADER[sdk=macosx*]" = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QX735LV746;
@@ -499,6 +541,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovieProjectSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MovieProjectSwiftUI";
+				"TEST_HOST[sdk=macosx*]" = "$(BUILT_PRODUCTS_DIR)/MovieProjectSwiftUI.app/Contents/MacOS/MovieProjectSwiftUI";
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Debug;
@@ -507,6 +550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"BUNDLE_LOADER[sdk=macosx*]" = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QX735LV746;
@@ -525,6 +569,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MovieProjectSwiftUI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MovieProjectSwiftUI";
+				"TEST_HOST[sdk=macosx*]" = "$(BUILT_PRODUCTS_DIR)/MovieProjectSwiftUI.app/Contents/MacOS/MovieProjectSwiftUI";
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Release;

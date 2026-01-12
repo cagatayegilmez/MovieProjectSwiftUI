@@ -6,16 +6,14 @@
 //
 
 import SwiftUI
-import CoreData
 
 @main
 struct MovieProjectSwiftUIApp: App {
-    let persistenceController = PersistenceController.shared
+    private let coordinator = AppCoordinator()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            AppCoordinatorRootView(coordinator: coordinator)
         }
     }
 }
