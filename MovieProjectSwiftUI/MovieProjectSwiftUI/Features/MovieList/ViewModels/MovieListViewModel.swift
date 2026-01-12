@@ -3,12 +3,6 @@ import Foundation
 
 @MainActor
 final class MovieListViewModel: ObservableObject {
-    enum ViewState: Equatable {
-        case loading
-        case empty
-        case success
-        case error(message: String)
-    }
 
     @Published private(set) var state: ViewState = .loading
     @Published private(set) var movies: [MovieListModel] = []
