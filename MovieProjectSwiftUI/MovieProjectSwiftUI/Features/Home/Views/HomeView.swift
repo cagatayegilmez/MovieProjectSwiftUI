@@ -14,32 +14,31 @@ struct HomeView: View {
     }
 
     var body: some View {
-        content
-            .background(platformBackgroundGray) // UIKit HomeView uses gray background.
-            .ignoresSafeArea()
-            .onAppear {
-                viewModel.onAppear()
-            }
-            .alert(isPresented: Binding(
-                get: { viewModel.alertMessage != nil },
-                set: { if !$0 { viewModel.alertMessage = nil } }
-            )) {
-                Alert(
-                    title: Text(""),
-                    message: Text(viewModel.alertMessage ?? ""),
-                    dismissButton: .cancel(Text("İptal"))
-                )
-            }
+        ZStack {
+            platformBackgroundGray.ignoresSafeArea()
+            content
+                .onAppear {
+                    viewModel.onAppear()
+                }
+                .alert(isPresented: Binding(
+                    get: { viewModel.alertMessage != nil },
+                    set: { if !$0 { viewModel.alertMessage = nil } }
+                )) {
+                    Alert(
+                        title: Text(""),
+                        message: Text(viewModel.alertMessage ?? ""),
+                        dismissButton: .cancel(Text("İptal"))
+                    )
+                }
+        }
     }
 
     @ViewBuilder
     private var content: some View {
         switch viewModel.state {
         case .loading, .empty, .error:
-            // UIKit shows no loader UI and no explicit empty state UI.
-            // We still render the scaffold to match layout expectations.
+            // TODO: Loading View
             homeContent(nowPlaying: viewModel.nowPlaying, upcoming: viewModel.upcoming)
-
         case .success:
             homeContent(nowPlaying: viewModel.nowPlaying, upcoming: viewModel.upcoming)
         }
@@ -58,7 +57,6 @@ struct HomeView: View {
                                 viewModel.didSelectUpcoming(movie: movie)
                             }
                             .task {
-                                // UIKit loads more when the table reaches bottom.
                                 if movie.id == upcoming.last?.id {
                                     await viewModel.loadMore()
                                 }
@@ -68,7 +66,7 @@ struct HomeView: View {
                 .padding(.top, 12)
             }
         }
-        .background(Color(.white))
+        .background(.white)
         .refreshable {
             await viewModel.refresh()
         }

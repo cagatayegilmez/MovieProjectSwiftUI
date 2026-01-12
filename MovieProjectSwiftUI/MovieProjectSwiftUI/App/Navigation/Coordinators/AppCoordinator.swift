@@ -46,16 +46,10 @@ struct AppCoordinatorRootView: View {
 
     var body: some View {
         NavigationView {
-            #if os(iOS)
             HomeContainerView(coordinator: coordinator)
-                .navigationBarHidden(true) // UIKit parity: Home hides the nav bar.
-            #else
-            HomeContainerView(coordinator: coordinator)
-            #endif
+                .navigationBarHidden(true)
         }
-        #if os(iOS)
-        .navigationViewStyle(.stack)
-        #endif
+        .navigationViewStyle(StackNavigationViewStyle())
         .task {
             await NetworkingSanityCheck.run()
         }
