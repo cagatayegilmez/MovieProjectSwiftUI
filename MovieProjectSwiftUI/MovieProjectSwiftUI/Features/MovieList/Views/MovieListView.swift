@@ -27,7 +27,7 @@ struct MovieListView: View {
     private var content: some View {
         switch viewModel.state {
         case .loading, .empty, .error:
-            // No loader/empty UI by design; show list container anyway.
+            // TODO: Add loading view
             listView
         case .success:
             listView
