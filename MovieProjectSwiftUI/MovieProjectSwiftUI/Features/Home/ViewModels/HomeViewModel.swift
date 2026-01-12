@@ -1,14 +1,16 @@
 import Foundation
 import Combine
 
+enum ViewState: Equatable {
+    case loading
+    case empty
+    case success
+    case error(message: String)
+}
+
+
 @MainActor
 final class HomeViewModel: ObservableObject {
-    enum ViewState: Equatable {
-        case loading
-        case empty
-        case success
-        case error(message: String)
-    }
 
     // MARK: - Outputs (state)
     @Published private(set) var state: ViewState = .loading
@@ -59,8 +61,8 @@ final class HomeViewModel: ObservableObject {
         }
     }
 
-    // MARK: - API sequencing (UIKit parity)
-    /// UIKit parity:
+    // MARK: - API sequencing
+    ///
     /// - Start "loading" (but UIKit shows no loader UI because loader is commented out).
     /// - Fetch now playing, then upcoming page `currentPage` (initially 1).
     /// - Only after upcoming returns successfully does the UI refresh.
@@ -83,7 +85,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
 
-    /// UIKit parity:
+    /// Parity:
     /// - Pull-to-refresh sets `currentPage = 0` and fetches upcoming for page 0
     /// - Does NOT clear the existing upcoming list; it appends.
     func refresh() async {
@@ -99,7 +101,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
 
-    /// UIKit parity:
+    /// Parity:
     /// - When reaching the bottom, increments `currentPage` and fetches upcoming again, appending results.
     /// - No in-flight guard exists in UIKit; repeated triggers can issue multiple requests.
     func loadMore() async {
@@ -117,9 +119,10 @@ final class HomeViewModel: ObservableObject {
 
     // MARK: - User actions
     func didSelectNowPlaying(movieId: Int) {
-        // UIKit: derives title by filtering nowPlaying by id and force-indexing [0]
-        // We avoid crashing by guarding, but we won't navigate if not found.
-        guard let title = nowPlaying.first(where: { $0.id == movieId })?.title else { return }
+        guard let title = nowPlaying.first { $0.id == movieId }?.title else {
+            return
+        }
+
         onNavigateToMovieDetail(movieId, title)
     }
 

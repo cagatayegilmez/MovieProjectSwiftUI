@@ -1,11 +1,5 @@
 import SwiftUI
 
-/// Home screen (UIKit parity focused).
-///
-/// Notes:
-/// - UIKit hides the navigation bar on Home.
-/// - UIKit has "loader" calls but the loader is effectively not visible (commented out),
-///   so we must not show a spinner/loading overlay here.
 struct HomeView: View {
     @ObservedObject private var viewModel: HomeViewModel
 

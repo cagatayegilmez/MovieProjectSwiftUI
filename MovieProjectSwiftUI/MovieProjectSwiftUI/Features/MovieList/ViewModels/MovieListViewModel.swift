@@ -29,7 +29,6 @@ final class MovieListViewModel: ObservableObject {
     }
 
     func onAppear() {
-        // Avoid starting real network calls when the app is launched as a test host.
         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
             return
         }
@@ -43,7 +42,6 @@ final class MovieListViewModel: ObservableObject {
         }
     }
 
-    /// Initial load uses UIKit paging default: page starts at 1.
     func loadInitial() async {
         state = .loading
         currentPage = 1
@@ -58,7 +56,6 @@ final class MovieListViewModel: ObservableObject {
         }
     }
 
-    /// Pull-to-refresh: accepted deviation — reset and reload from page 0 (replace data).
     func refresh() async {
         currentPage = 0
         do {
@@ -66,12 +63,10 @@ final class MovieListViewModel: ObservableObject {
             movies = response.results
             recomputeState()
         } catch {
-            // Keep current UI; only show alert (aligns with Home behavior).
             alertMessage = localizedMessage(for: error)
         }
     }
 
-    /// Pagination: match UIKit logic — increment page, fetch, append.
     func loadMore() async {
         currentPage += 1
         do {
