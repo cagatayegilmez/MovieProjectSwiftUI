@@ -1,5 +1,12 @@
-import Foundation
+//
+//  HomeViewModel.swift
+//  MovieProjectSwiftUI
+//
+//  Created by Çağatay Eğilmez on 14.01.2026.
+//
+
 import Combine
+import Foundation
 
 enum ViewState: Equatable {
     case loading
@@ -10,7 +17,7 @@ enum ViewState: Equatable {
 
 
 @MainActor
-final class HomeViewModel: ObservableObject {
+final class HomeViewModel: HomeViewModelProtocol {
 
     // MARK: - Outputs (state)
     @Published private(set) var state: ViewState = .loading
@@ -119,7 +126,7 @@ final class HomeViewModel: ObservableObject {
 
     // MARK: - User actions
     func didSelectNowPlaying(movieId: Int) {
-        guard let title = nowPlaying.first { $0.id == movieId }?.title else {
+        guard let title = nowPlaying.first(where: { $0.id == movieId })?.title else {
             return
         }
 

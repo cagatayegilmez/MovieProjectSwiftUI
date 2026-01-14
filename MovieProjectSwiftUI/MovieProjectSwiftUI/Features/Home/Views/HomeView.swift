@@ -1,3 +1,10 @@
+//
+//  HomeView.swift
+//  MovieProjectSwiftUI
+//
+//  Created by Çağatay Eğilmez on 14.01.2026.
+//
+
 import SwiftUI
 
 struct HomeView: View {
@@ -229,16 +236,6 @@ private var platformPlaceholder: Color {
     #else
     Color.gray.opacity(0.3)
     #endif
-}
-
-#Preview {
-    HomeView(
-        viewModel: HomeViewModel(
-            fetchNowPlaying: { MovieModel(results: []) },
-            fetchUpcoming: { _ in MovieModel(results: []) },
-            onNavigateToMovieDetail: { _, _ in }
-        )
-    )
 }
 
 
