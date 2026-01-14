@@ -8,14 +8,6 @@
 import Combine
 import Foundation
 
-enum ViewState: Equatable {
-    case loading
-    case empty
-    case success
-    case error(message: String)
-}
-
-
 @MainActor
 final class HomeViewModel: HomeViewModelProtocol {
 
