@@ -1,4 +1,10 @@
-import Foundation
+//
+//  BaseCoordinator.swift
+//  MovieProjectSwiftUI
+//
+//  Created by Çağatay Eğilmez on 14.01.2026.
+//
+
 
 /// Base coordinator abstraction for MVVM-C.
 ///

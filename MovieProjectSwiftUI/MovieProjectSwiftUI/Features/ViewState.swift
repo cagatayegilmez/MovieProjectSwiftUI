@@ -6,6 +6,7 @@
 //
 
 enum ViewState: Equatable {
+
     case loading
     case empty
     case success

@@ -1,3 +1,10 @@
+//
+//  AppCoordinator.swift
+//  MovieProjectSwiftUI
+//
+//  Created by Çağatay Eğilmez on 14.01.2026.
+//
+
 import SwiftUI
 import Combine
 
