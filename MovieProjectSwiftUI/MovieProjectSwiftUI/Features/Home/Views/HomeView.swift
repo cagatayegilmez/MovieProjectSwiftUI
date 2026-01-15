@@ -16,7 +16,7 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-            platformBackgroundGray.ignoresSafeArea()
+            platformBackgroundGray
             content
                 .onAppear {
                     viewModel.onAppear()
@@ -32,6 +32,7 @@ struct HomeView: View {
                     )
                 }
         }
+        .ignoresSafeArea()
     }
 
     @ViewBuilder

@@ -33,21 +33,21 @@
 		52328F452F14FEF0004DA772 /* Exceptions for "MovieProjectSwiftUI" folder in "MovieProjectSwiftUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Resource/Info.plist,
 			);
 			target = 52E782ED2F07D15100ADC313 /* MovieProjectSwiftUITests */;
 		};
 		52328F462F14FEF0004DA772 /* Exceptions for "MovieProjectSwiftUI" folder in "MovieProjectSwiftUIUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Resource/Info.plist,
 			);
 			target = 52E782F72F07D15100ADC313 /* MovieProjectSwiftUIUITests */;
 		};
 		52328F492F150077004DA772 /* Exceptions for "MovieProjectSwiftUI" folder in "MovieProjectSwiftUI" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Resource/Info.plist,
 			);
 			target = 52E782DB2F07D15000ADC313 /* MovieProjectSwiftUI */;
 		};
@@ -430,7 +430,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = MovieProjectSwiftUI/Info.plist;
+				INFOPLIST_FILE = MovieProjectSwiftUI/Resource/Info.plist;
 				INFOPLIST_KEY_API_KEY = "$(API_KEY)";
 				INFOPLIST_KEY_API_URL = "$(API_URL)";
 				INFOPLIST_KEY_CFBundleDisplayName = "Movie Project";
@@ -445,7 +445,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
@@ -482,7 +482,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = MovieProjectSwiftUI/Info.plist;
+				INFOPLIST_FILE = MovieProjectSwiftUI/Resource/Info.plist;
 				INFOPLIST_KEY_API_KEY = "$(API_KEY)";
 				INFOPLIST_KEY_API_URL = "$(API_URL)";
 				INFOPLIST_KEY_CFBundleDisplayName = "Movie Project";
@@ -497,7 +497,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.6;

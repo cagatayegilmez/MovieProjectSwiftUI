@@ -13,8 +13,6 @@ import Combine
 /// Note: The current app target deploys to iOS 15.x, so we use `NavigationView` for now
 /// (not `NavigationStack` / `NavigationPath`, which require iOS 16+).
 final class AppCoordinator: ObservableObject, BaseCoordinator {
-    let objectWillChange = ObservableObjectPublisher()
-
     enum Route: Hashable {
         case home
         // Future routes (e.g. movieDetail) will be added during feature implementation.
@@ -26,7 +24,7 @@ final class AppCoordinator: ObservableObject, BaseCoordinator {
         let title: String
     }
 
-    @Published private(set) var movieDetailRoute: MovieDetailRoute? = nil
+    @Published var movieDetailRoute: MovieDetailRoute? = nil
 
     func start() -> Route {
         .home
@@ -34,29 +32,38 @@ final class AppCoordinator: ObservableObject, BaseCoordinator {
 
     func navigateToMovieDetail(movieId: Int, title: String) {
         movieDetailRoute = MovieDetailRoute(movieId: movieId, title: title)
-        objectWillChange.send()
     }
 
     func clearMovieDetailRoute() {
         movieDetailRoute = nil
-        objectWillChange.send()
+    }
+    
+    @ViewBuilder
+    func makeMovieDetailView(movieId: Int, title: String) -> some View {
+        // - TODO: Add movie detail view
+        EmptyView()
+    }
+    
+    func setMovieDetailRoute(_ route: MovieDetailRoute?) {
+        movieDetailRoute = route
     }
 }
 
 /// Coordinator-owned root container.
 struct AppCoordinatorRootView: View {
-    @StateObject private var coordinator: AppCoordinator
+    @ObservedObject private var coordinator: AppCoordinator
 
     init(coordinator: AppCoordinator) {
-        _coordinator = StateObject(wrappedValue: coordinator)
+        _coordinator = ObservedObject(wrappedValue: coordinator)
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             HomeContainerView(coordinator: coordinator)
-                .navigationBarHidden(true)
+                .navigationDestination(item: $coordinator.movieDetailRoute) { route in
+                    coordinator.makeMovieDetailView(movieId: route.movieId, title: route.title)
+                }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .task {
             await NetworkingSanityCheck.run()
         }
@@ -86,25 +93,7 @@ private struct HomeContainerView: View {
     }
 
     var body: some View {
-        ZStack {
-            HomeView(viewModel: viewModel)
-
-            NavigationLink(
-                destination: MovieDetailPlaceholderView(
-                    title: coordinator.movieDetailRoute?.title ?? "",
-                    onDisappear: { coordinator.clearMovieDetailRoute() }
-                ),
-                isActive: Binding(
-                    get: { coordinator.movieDetailRoute != nil },
-                    set: { isActive in
-                        if !isActive { coordinator.clearMovieDetailRoute() }
-                    }
-                )
-            ) {
-                EmptyView()
-            }
-            .hidden()
-        }
+        HomeView(viewModel: viewModel)
     }
 }
 
