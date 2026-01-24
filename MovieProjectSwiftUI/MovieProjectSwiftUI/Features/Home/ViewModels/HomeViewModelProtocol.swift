@@ -14,6 +14,7 @@ protocol HomeViewModelProtocol: ObservableObject {
     var nowPlaying: [MovieListModel] { get }
     var upcoming: [MovieListModel] { get }
     var alertMessage: String? { get }
+    var searchQuery: String { get set }
     
     func onAppear()
     func loadInitial() async

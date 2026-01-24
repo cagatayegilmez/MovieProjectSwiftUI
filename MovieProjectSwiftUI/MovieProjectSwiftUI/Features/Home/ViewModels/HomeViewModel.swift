@@ -16,6 +16,7 @@ final class HomeViewModel: HomeViewModelProtocol {
     @Published private(set) var nowPlaying: [MovieListModel] = []
     @Published private(set) var upcoming: [MovieListModel] = []
     @Published var alertMessage: String? = nil
+    @Published var searchQuery: String = ""
 
     // MARK: - Dependencies (no new abstraction; closures for testability)
     private let fetchNowPlaying: @Sendable () async throws -> MovieModel
